@@ -9,7 +9,9 @@ from .models import Note
 # Create your views here.
 class NoteListCreate(generics.ListCreateAPIView):
     serializer_class = NoteSerializer
-    permission_classes= [IsAuthenticated]
+    # permission_classes= [IsAuthenticated]
+    permission_classes= [AllowAny]
+
 
     def get_queryset(self):
         user = self.request.user
@@ -22,6 +24,13 @@ class NoteListCreate(generics.ListCreateAPIView):
         else:
             print(serializer.errors)
 
+class NoteDelete(generics.DestroyAPIView):
+    queryset = Note.objects.all()
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        user = self.request.user
+        return Note.objects.filter(author=user)
 
 class CreateUserView(generics.CreateAPIView):
     queryset = User.objects.all()
