@@ -37,5 +37,3 @@ class CreateUserView(generics.CreateAPIView):
 
     serializer_class = UserSerializer
     permission_classes = [AllowAny]
-
-
