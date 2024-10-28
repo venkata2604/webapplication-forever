@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import api from "../api";
-// import Note from "../components/Note"
-// import "../styles/Home.css"
+import Note from "../components/Note"
+import "../styles/Home.css"
 
 function Home() {
     const [notes, setNotes] = useState([]);
@@ -66,7 +66,7 @@ function Home() {
                     onChange={(e) => setTitle(e.target.value)}
                     value={title}
                 />
-                <label htmlFor="content">Content:</label>
+                <label htmlFor="content"><br></br>Content:</label>
                 <br />
                 <textarea
                     id="content"
